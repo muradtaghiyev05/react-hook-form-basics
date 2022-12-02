@@ -2,14 +2,16 @@ import { useForm } from 'react-hook-form'
 
 function App() {
 
-  const { register, handleSubmit, formState: { errors }, getValues } = useForm({
+  const { register, handleSubmit, watch, formState: { errors }, getValues } = useForm({
     mode: "onChange"
   });
+
+  const watchName = watch("name");
 
   // when submitted successfully
   const onSubmit = (data) => {
     console.log("Registered!");
-    console.log(data);
+    console.log(`Hello, ${watchName}.You registered successfully`);
   }
 
   // when submition failed
